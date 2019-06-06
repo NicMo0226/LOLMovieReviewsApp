@@ -1,0 +1,538 @@
+﻿body {
+    background-color: #025588;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-left: 1em solid black;
+    border-right: 1em solid black;
+    font-family: 'Exo 2', sans-serif;
+    min-height: 100%;
+}
+
+.container-fluid {
+    border-top: 1px solid #d7dd35;
+    border-bottom: 1px solid #d7dd35;
+}
+
+#first, .flexbox {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.row {
+    padding-top: .2em;
+    padding-bottom: .2em;
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+}
+/* Set padding to keep content from hitting the edges */
+.gation {
+    display: inline-block;
+}
+
+a:hover {
+    color: #e42d9e !important;
+    text-decoration: none;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.section1 {
+    height: 102em;
+}
+
+#vid1 {
+    height: 20em;
+    min-width: 100%;
+}
+
+.avReview {
+    color: black;
+    font-family: 'Bangers', cursive;
+}
+
+.star {
+    padding-top: 3.5em;
+}
+
+.revNum {
+    padding-left: .5em;
+    color: black;
+    font-size: 2em;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.addRev {
+    margin-top: 6em;
+    font-size: 1em;
+    display: block;
+}
+
+.openCreate {
+    width: 200px;
+}
+
+.toggle {
+    padding-top: 1.5em;
+}
+
+.descSect {
+    color: black;
+    border: solid 2px #e42d9e;
+    background-color: White;
+    padding: 1em;
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin: 0 auto;
+    height: auto;
+}
+
+.sqaure {
+    background-color: #F4F4F4;
+}
+
+.nxtSect {
+    color: black;
+    border: solid 2px #e42d9e;
+    background-color: white;
+    padding: 2em;
+    padding-left: 3em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin: 0 auto;
+    height: auto;
+}
+/*dilm details page persons background tile*/
+.nxtSectTile {
+    background-color: #575Da9;
+    padding: 1em;
+    color: white;
+    border: solid 2px #e42d9e;
+}
+/*person page background tile*/
+.personTile {
+    color: black;
+    border: solid 2px #e42d9e;
+    background-color: white;
+    padding: 1em;
+    margin-bottom: 2em;
+    margin-top: 1em;
+    height: 28em;
+}
+
+.reviewTile {
+    color: black;
+    border: solid 2px #e42d9e;
+    background-color: white;
+    padding: 1em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    height: 21em;
+}
+
+.film-tile {
+    background-color: white;
+    padding: .5em;
+    margin-bottom: .5em;
+    margin-top: .5em;
+    border: solid 2px #e42d9e;
+}
+
+.DeleteTile {
+    background-color: green;
+    padding: .5em;
+    margin-bottom: .5em;
+    margin-top: .5em;
+    border: solid 2px #e42d9e;
+    color: white;
+    text-align: left;
+}
+
+.frame {
+    max-width: 100%;
+    padding-bottom: 3em;
+    padding-top: 3em;
+}
+
+#description {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.feed, .film-tile {
+    font-family: 'Bangers', cursive;
+    text-align: center;
+    text-shadow: 1px 1px 2px #26007f;
+}
+
+.review {
+    font-family: 'Exo 2', sans-serif;
+    padding: .5em;
+}
+
+.user {
+    float: right;
+    padding-right: .5em;
+    font-family: 'Exo 2', sans-serif;
+    font-style: italic;
+    padding-bottom: .5em;
+}
+
+.adminoptions {
+    font-family: 'Exo 2', sans-serif;
+    list-style: none;
+    color: #575Da9;
+    text-shadow: 1px 1px 2px #D7DD35;
+}
+
+
+
+.cats {
+    font-family: 'Bangers', cursive;
+}
+
+.genre {
+    list-style-type: none;
+    font-size: 1.8em;
+    text-align: center;
+    padding: .5em;
+}
+
+.first {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+hr {
+    color: #e42d9e;
+}
+
+.headerSect {
+    background-color: #575Da9;
+    height: 14em;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.navbar {
+    background-color: white;
+}
+
+    .navbar a {
+        color: black;
+        padding-left: .5em;
+        padding-right: .5em;
+        font-size: 1.5em;
+    }
+
+.nav {
+    display: inline !important;
+}
+
+.logo {
+    margin-bottom: 1em;
+    color: white;
+}
+
+.title {
+    font-family: 'Bangers', cursive;
+    font-size: 3.0em;
+    margin-top: .8em;
+    padding-top: 0 !important;
+    color: white;
+}
+
+.Title1 {
+    font-family: 'Bangers', cursive;
+    padding-top: 0;
+    font-size: 2em;
+}
+
+footer {
+    background-color: #575Da9;
+}
+
+.extralinks {
+    font-family: 'Bangers', cursive;
+    color: white;
+    text-align: center;
+    padding-bottom: 1em;
+    font-size: 2em;
+}
+
+.links {
+    font-family: 'Exo 2', sans-serif;
+    color: white;
+    text-align: center;
+    list-style: none;
+    font-size: 1.8em;
+}
+
+.cpyright {
+    font-family: 'Exo 2', sans-serif;
+    font-size: .8em;
+    text-align: center;
+    color: white;
+    margin-top: 2em;
+}
+
+.smlinks {
+    padding-left: 3.5em;
+}
+
+#mySearch {
+    min-width: 70% !important;
+    border: .5px solid grey;
+    box-shadow: 1px 2px 2px blueviolet;
+}
+
+.search {
+    padding-top: 2em;
+}
+
+.actionBtn {
+    margin-top: 1.5em;
+    background-color: #575Da9;
+    color: white;
+    border: 1px solid black;
+    box-shadow: 1px 2px 2px blueviolet;
+}
+
+.top {
+    margin-top: 1em;
+}
+
+.section2 {
+    padding-bottom: 2em;
+}
+
+.name {
+    list-style-type: none;
+    padding-bottom: 1em;
+    padding-top: 2em;
+}
+
+dd, dt {
+    padding: .5em;
+}
+
+pImage {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    margin: 0 auto;
+}
+
+#logo {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 2em;
+}
+
+.info {
+    padding-right: 2em;
+}
+
+.desc {
+    border-bottom: solid 1px #D7DD35;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-bottom: 1em;
+    text-align: justify;
+    color: black;
+}
+
+.bio {
+    padding-top: 2.5em;
+    color: black;
+}
+
+h4, .title {
+    font-family: 'Bangers', cursive;
+    padding-top: 1.5em;
+    color: white;
+}
+
+h2 {
+    font-family: 'Bangers', cursive;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.undertitle {
+    padding-top: 1em;
+}
+
+.name {
+    margin-left: 2em;
+    color: black;
+}
+
+a {
+    color: black;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.film-tile {
+    background-color: white;
+    padding: .5em;
+    margin-bottom: .5em;
+    margin-top: .5em;
+    border: solid 2px #e42d9e;
+}
+
+.filmtitle {
+    padding-top: .5em;
+    height: 1.5em;
+    color: black;
+}
+
+.imgHover {
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+#FilmId, #FilmGenreId, #PersonFname, #PersonDesc {
+    border: 1px solid #e42d9e;
+}
+
+#PersonId, #GenreId, #ActorId, #DirectorId, #CharacterId, #WriterId, #PersonSname {
+    border: 2px solid #D7DD35;
+}
+
+.headerSect {
+    border-top: 0;
+    margin-top: 0 !important;
+    padding-bottom: 0;
+    margin-bottom: 0 !important;
+}
+
+.PageTitles {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.pageTitle {
+    color: black;
+}
+
+.linksTile {
+    position: absolute;
+    bottom: 2em;
+    color: white;
+    vertical-align: central !important;
+}
+
+.desclinks {
+    padding-top: 2em;
+    color: black;
+}
+
+.length {
+    border-top: 1px solid #D7DD35;
+    width: 100%;
+}
+
+.linksTileDdetails a {
+    color: black;
+}
+
+.linksTileDdetails {
+    color: black;
+}
+
+.pageNum a {
+    color: white;
+    padding: .2em;
+}
+
+.editLinks a {
+    color: black;
+}
+
+.active a {
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.active {
+    color: #D7DD35;
+    font-family: 'Bangers', cursive;
+    font-size: 1em;
+    text-align: center;
+}
+
+h2 {
+    padding-top: .2em;
+    padding-bottom: .5em;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: white;
+}
+
+.first {
+    border-top: 0;
+}
+
+.searchBtn {
+    margin-top: 0;
+}
+
+#searchString {
+    width: 35em !important;
+    margin: 0 auto;
+    max-width: 40em;
+    border: solid 2px #D7DD35;
+}
+
+.glyphicon-search {
+    border: solid 1px #e42d9e;
+}
+@media screen and (max-width: 800px) and (min-width: 600px) {
+    .Title1 {
+font-size: 1.5em;
+    }
+    .title {
+        font-size: 1.3em;
+    }
+    #logo {
+        width: 100px;
+    }
+    #searchString {
+        max-width: 20em;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 320px) {
+    .Title1 {
+        font-size: 1.3em;
+    }
+
+    .title {
+        font-size: 1.1em;
+    }
+    #logo { 
+        width: 200px;
+
+          }
+
+    #searchString {
+       max-width: 15em;
+    }
+}

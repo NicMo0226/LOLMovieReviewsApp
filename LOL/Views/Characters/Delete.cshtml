@@ -1,0 +1,58 @@
+﻿@model LOL.Models.Character
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Character</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterFname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterFname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterSname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterSname)
+        </dd>
+
+      
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterQuote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterQuote)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn actionBtn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

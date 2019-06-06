@@ -1,0 +1,110 @@
+﻿@model PagedList.IPagedList<LOL.Models.Character>
+@using PagedList.Mvc
+<link href="~Content/PagedList.css" rel="stylesheet" type="text/css">
+
+@{
+    ViewBag.Title = "Index";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        //find the control with name searchString
+        //and apply autocomplete plugin
+        $("[name='searchString']").autocomplete({
+            //get data from Search action
+            source: '@Url.Action("Search")',
+            //search when min 2 characters are entered
+            minLength: 2,
+            //when option selected
+            select: function (event, ui) {
+                //go to the details action and append the id
+                //from the JSON results
+                window.location = '@Url.Action("Details")'
+                    + '/' + ui.item.id
+            }
+        });
+    })
+
+</script>
+<div class="container-fluid first">
+    <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-0 col-xs-0">
+            <h2>Characters</h2>
+        </div>
+        <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                        @using (Html.BeginForm("Index", "Characters", FormMethod.Get))
+            {
+                <p>
+                    Search: @Html.TextBox("searchString",
+ViewBag.CurrentFilter as string)
+                                                            <input class="glyphicon glyphicon-search" type="submit">
+
+                </p>
+            }
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-0 col-xs-0">
+            <p class="active">
+                Want to<br />
+                @Html.ActionLink("add a Character", "Create")
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="pageNum">
+                @Html.ActionLink("Sort Order", "Index",
+                                              new
+                               {
+                                                   sortOrder = ViewBag.TitleSortParm,
+                                   currentFilter = ViewBag.CurrentFilter
+                               })
+            </p>
+        </div>
+                @foreach (var item in Model)
+        {
+     
+            <div class="col-3 tile">
+                <div class="container personTile">
+                    <div class="row">
+                        <div class="col-6 personName">
+                            <h5>
+                                @Html.DisplayFor(modelItem => item.CharacterFname)
+                                @Html.DisplayFor(modelItem => item.CharacterSname)
+                            </h5>
+                        </div>
+                                            </div>
+                                        <b> @Html.DisplayNameFor(model => model.FirstOrDefault().CharacterDate)</b>
+                    @Html.DisplayFor(modelItem => item.CharacterDate)
+                    <br />
+                    <br />
+                    <b>  @Html.DisplayNameFor(model => model.FirstOrDefault().CharacterQuote)</b>
+                    <br />
+                    @Html.DisplayFor(modelItem => item.CharacterQuoteTrimmed)
+                    @Html.ActionLink("continue to full quote", "Details", new { id = item.CharacterId })
+                                        <br />
+                    <br />
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.CharacterId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CharacterId })
+
+                </div>
+            </div>
+                    }
+            </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 pageNum">
+            Page @(Model.PageCount < Model.PageNumber ?
+                                                     0 : Model.PageNumber) of @Model.PageCount
+
+                                                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                                                                                       new
+                                                                                       {
+                                                                                           page,
+                                                                                           sortOrder = ViewBag.CurrentSort,
+                                                                                           currentFilter = ViewBag.CurrentFilter
+                                                                                       }))
+                                                            </div>
+                                            </div>
+                                        </div>

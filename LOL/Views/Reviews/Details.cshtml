@@ -1,0 +1,79 @@
+﻿@model LOL.Models.ViewModels.FilmReviewViewModel
+            @{
+                ViewBag.Title = "Details";
+            }
+<script type="text/javascript">
+    $(document).ready(function () {
+        //for each of the rating dropdowns....
+        $('.Rating ').each(function () {
+            //get the value of the id from the hidden field next to it
+            var selectId = $(this).next().val();
+            //now apply this as the current id and apply to the droipdown box
+            $(this).val(selectId);
+        });
+
+        //now apply the plugin and set to read only
+        $('.Rating').barrating({
+            theme: 'fontawesome-stars',
+            readonly: true
+        });
+    });
+</script>
+            <h2>Review Details</h2>
+
+            <div>
+                
+        
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Film.FilmTitle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Film.FilmTitle)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Review.ReviewUname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Review.ReviewUname)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Review.ReviewContent)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Review.ReviewContent)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Review.ReviewRating)
+                    </dt>
+
+                    <dd>
+                        <select class="Rating">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="">9</option>
+                            <option value="10">10</option>
+                        </select>
+
+                        <input type="hidden" class="initialRating" value="@Model.Review.ReviewRating">
+                    </dd>
+
+                </dl>
+            </div>
+            <p class="linksTileDdetails">
+                @Html.ActionLink("Go to Film", "Details", "Films", new { id = Model.Review.FilmId }, null) |
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Review.ReviewId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>

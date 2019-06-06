@@ -1,0 +1,376 @@
+﻿@model LOL.Models.ViewModels.FilmPageViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        //for each of the rating dropdowns....
+        $('.Rating ').each(function () {
+            //get the value of the id from the hidden field next to it
+            var selectId = $(this).next().val();
+            //now apply this as the current id and apply to the droipdown box
+            $(this).val(selectId);
+        });
+
+        //now apply the plugin and set to read only
+        $('.Rating').barrating({
+            theme: 'fontawesome-stars',
+            readonly: true
+        });
+    });
+</script>
+
+
+    <script>
+        var TeamDetailPostBackURL = '/Reviews/Create';
+        $(function () {
+            $(".openCreate").click(function () {
+                debugger;
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id');
+                var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: TeamDetailPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "Id": id },
+                    datatype: "json",
+                    success: function (data) {
+                        debugger;
+                        $('#myModalContent').html(data);
+                        $('#myModal').modal(options);
+                        $('#myModal').modal('show');
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+            });
+            //$("#closebtn").on('click',function(){
+            //    $('#myModal').modal('hide');
+
+            $("#closbtn").click(function () {
+                $('#myModal').modal('hide');
+            });
+        });
+
+    </script>
+    <script>
+        var status = true;
+        var timer;
+        $(document).ready(function () {
+            loop();
+            setTimeout('clearTimeout(timer)', 5000);
+        });
+
+        function loop() {
+            $(".openCreate").effect("shake", { distance: 1 });
+         
+            status ? status = false : status = true;
+            timer = setTimeout('loop()', 10);
+        }
+    </script>
+    <h4 class="pageTitle">Details</h4>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 container nxtSect pImage">
+
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h1 class="pageTitle">
+                                    @Html.DisplayFor(model => model.Film.FilmTitle)
+                                </h1>
+                            </div>
+                            <div class="col-sm-6">
+                                @if (Model.Film.FilmImage != null)
+                    {<img src="@Url.Content(Model.Film.FilmImage)" width="100" />
+        }
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="container name">
+
+                                    <strong> <em>  @Html.DisplayNameFor(model => model.Film.FilmBBFC):</em></strong>
+                                    @Html.DisplayFor(model => model.Film.FilmBBFC) |
+                                    <strong>    <em> @Html.DisplayNameFor(model => model.Film.FilmReleaseDate):</em></strong>
+                                    @Html.DisplayFor(model => model.Film.FilmReleaseDate) |
+                                    <strong> <em>  @Html.DisplayNameFor(model => model.Film.FilmSequel):</em></strong>
+                                    @Html.DisplayFor(model => model.Film.FilmReleaseDate) |
+                                   
+                                    
+                                
+
+                           
+                                </div>
+                                <h4 class="undertitle">
+                                    @Html.DisplayNameFor(model => model.Film.FilmTrailer)
+                                </h4>
+                                @if (Model.Film.FilmTrailer != null)
+                    {
+
+                        <iframe src="@Model.Film.FilmTrailer"
+                                type=" application />x-shockwave-flash"
+                                allowscriptaccess="always"
+                                width="600" height="410"></iframe>
+        }
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-5">
+                        <h5 class="bio">
+                            @Html.DisplayNameFor(model => model.Film.FilmDesc)
+                        </h5>
+                        <br />
+                        <p class="desc">
+                            @Html.DisplayFor(model => model.Film.FilmDesc)
+                        </p>
+
+                        <div class="row">
+                            <div class="col-sm-1 star">
+
+                                <img width="60" src="~/Content/images/Star.png" />
+                            </div>
+                            <div class="col-sm-4 ">
+                                <h4 class="avReview"> Average Review</h4>
+                                <p class="revNum">
+                                    @ViewBag.AverageReview
+                                </p>
+                            </div>
+                            <div class="col-7 addRev">
+                                @*
+                              @Html.ActionLink("Add Review", "Create", "Reviews",
+                        new { id = Model.Film.FilmId }, null) |*@
+                                <a href="javascript:void(0);" class="openCreate" data-id="@Model.Film.FilmId">Add a new Review</a>
+
+                            </div>
+                            <div class="row length">
+                                <p class="desclinks">
+                                    @Html.ActionLink("Add Actor", "Create", "Actings",
+new { subName = "Film", FilmId = Model.Film.FilmId }, null) |
+                                    @Html.ActionLink("Add Director", "Create", "Directings",
+new { subName = "Film", FilmId = Model.Film.FilmId }, null) |
+                                    @Html.ActionLink("Add Writer", "Create", "Writings",
+new { subName = "Film", FilmId = Model.Film.FilmId }, null) |
+                                    @Html.ActionLink("Edit", "Edit", new { id = Model.Film.FilmId }, null) |
+                                    @Html.ActionLink("Back to List", "Index")
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.ActionLink("Alternative Comedy", "Index", "Genres",
+new { id = Model.Film.FilmId }, null) |
+            <div id='myModal' class='modal'>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div id='myModalContent'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <h4> Reviews</h4>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                @foreach (var review in Model.Reviews)
+                {
+                    <div class="col-4">
+                        <div class="container reviewTile">
+                            <h5>
+                                <b>
+                                    @Html.DisplayNameFor(model => review.ReviewRating)
+                                </b>
+                            </h5>
+                            <p>
+                                <select class="Rating">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <input type="hidden" class="initialRating" value="@review.ReviewRating">
+                            </p>
+                            <h5>
+                                <b>    @Html.DisplayNameFor(model => review.ReviewUname)</b>
+                                @Html.DisplayFor(model => review.ReviewUname)
+                            </h5>
+
+                            <br />
+                            <h5><b>  @Html.DisplayNameFor(model => review.ReviewContent)</b></h5>
+
+                            <p>
+                                @Html.DisplayFor(model => review.ReviewContentTrimmed)
+                                @Html.ActionLink("Continue to full Review", "Details", "Reviews", new { id = review.ReviewId }, "")
+                            </p>
+                            <p class="linksTile">
+                                @Html.ActionLink("Edit Review", "Edit", "Reviews", new { id = review.ReviewId }, null) |
+                                @Html.ActionLink("Back to List", "Index", "Reviews")
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4>Actors</h4>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                @foreach (var actor in Model.Actors)
+                {
+                    <div class="col-3">
+                        <div class="container personTile">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>
+                                        @Html.DisplayFor(model => actor.PersonFname)
+                                        @Html.DisplayFor(model => actor.PersonSname)
+                                    </h5>
+                                </div>
+                                <div class="col-6">
+                                    <p>
+                                        @if (actor.PersonImage != null)
+                                        {
+                                            <img src="@Url.Content(actor.PersonImage)" width="100" height="150" />
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                            <h5>
+                                @Html.DisplayNameFor(model => actor.PersonDesc)
+                            </h5>
+                            <p>
+                                @Html.DisplayFor(model => actor.PersonDescTrimmed)
+                                @Html.ActionLink("Continue to full Bio", "Details", "Persons", new { id = actor.PersonId }, "")
+                            </p>
+                            <p class="linksTile">
+                                @Html.ActionLink("Edit Person", "Edit", "Persons", new { id = actor.PersonId }, null) |
+                                @Html.ActionLink("Delete Person", "Delete", "Persons", new { id = actor.PersonId }, null)
+                            </p>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4>Directors</h4>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                @foreach (var directors in Model.Directors)
+                {
+                    <div class="col-3">
+                        <div class="container personTile">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>
+                                        @Html.DisplayFor(model => directors.PersonFname)
+                                        @Html.DisplayFor(model => directors.PersonSname)
+                                    </h5>
+                                </div>
+                                <div class="col-6">
+                                    <p>
+                                        @if (directors.PersonImage != null)
+                                        {
+                                            <img src="@Url.Content(directors.PersonImage)" width="100" height="150" />
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                            <p>
+                                @Html.DisplayNameFor(model => directors.PersonDesc)
+                                @Html.DisplayFor(model => directors.PersonDescTrimmed)
+                                @Html.ActionLink("Continue to full Bio", "Details", "Persons", new { id = directors.PersonId }, "")
+                            </p>
+                            <p class="linksTile">
+                                @Html.ActionLink("Edit Person", "Edit", "Persons", new { id = directors.PersonId }, null) |
+                                @Html.ActionLink("Delete Person", "Delete", "Persons", new { id = directors.PersonId }, null)
+                            </p>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4>Writers</h4>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                @foreach (var writers in Model.Writers)
+                {
+                    <div class="col-3">
+                        <div class="container personTile">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>
+                                        @Html.DisplayFor(model => writers.PersonFname)
+                                        @Html.DisplayFor(model => writers.PersonSname)
+                                    </h5>
+                                </div>
+                                <div class="col-6">
+                                    <p>
+                                        @if (writers.PersonImage != null)
+                                        {
+                                            <img src="@Url.Content(writers .PersonImage)" width="100" height="140" />
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                            <p>
+                                @Html.DisplayNameFor(model => writers.PersonDesc)
+                                @Html.DisplayFor(model => writers.PersonDescTrimmed)
+                                @Html.ActionLink("Continue to full Bio", "Details", "Persons", new { id = writers.PersonId }, "")
+                            </p>
+                            <p class="linksTile">
+                                @Html.ActionLink("Edit Person", "Edit", "Persons", new { id = writers.PersonId }, null) |
+                                @Html.ActionLink("Delete Person", "Delete", "Persons", new { id = writers.PersonId }, null)
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+

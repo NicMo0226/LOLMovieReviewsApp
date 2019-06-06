@@ -1,0 +1,28 @@
+﻿@model LOL.Models.Film
+
+
+    <div class="col-md-4 ">
+        <div class="container film-tile">
+            <h4 class="filmtitle">@Model.FilmTitle</h4>
+            <div class="film-image">
+
+                @if (Model.FilmImage != null)
+                {
+                    <img class="img-responsive imgHover" src="@Url.Content(Model.FilmImage)" width="250" />
+                }
+                <p class="linksTileDdetails">
+                    @Html.ActionLink("More Details", "Details", new { id = Model.FilmId })
+
+                </p>
+                <h5 class="adminoptions">
+                    User Options
+                </h5>
+                <p class="linksTileDdetails">
+
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.FilmId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.FilmId })
+                </p>
+
+            </div>
+        </div>
+    </div>

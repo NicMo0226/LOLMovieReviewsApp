@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/jquery")*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <!-- star rating plugin and themes -->
+    @Scripts.Render("~/Scripts/Stars/jquery.barrating.min.js")
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    @Styles.Render("~/Scripts/Stars/themes/fontawesome-stars.css")
+    @Styles.Render("~/Scripts/Stars/themes/fontawesome-stars-o.css")
+
+    <!--JQuery UI for autocomplete-->
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1/jquery-ui.min.js")
+    @Styles.Render("~/Scripts/jquery-ui-1.12.1/jquery-ui.min.css")
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div class="container-fluid headerSect ">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 logo">
+                <img class="img-responsive" id="logo" src="~/Content/images/newestlogosmaller.png" width="400"/>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <h1 class="title"><b>ARE YOU UP FOR THE CRACK?! :D</b></h1>
+                <h4 class="Title1">All your best Comedy films</h4>
+                        
+                    </div>
+                </div>
+            </div>
+       
+   
+    <nav class="navbar navbar-inverse">
+       <div class="nav navbar-nav">
+            @Html.ActionLink("LOL", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            @Html.ActionLink("Home", "Index", "Home")
+            @Html.ActionLink("Films", "Index", "Films")
+           @Html.ActionLink("People", "Index", "Persons")
+           </div>
+    </nav>
+   
+          
+  
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                @RenderBody()
+               
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h2 class="extralinks">USEFUL LINKS</h2>
+                    <ul class="links">
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h2 class="extralinks">FOLLOW</h2>
+                    <div class="smlinks">
+                        <img width="70" src="~/Content/images/youtube.png" />
+                        <img width="70" src="~/Content/images/vim.png" />
+                        <img width="70" src="~/Content/images/fb.png" />
+                        <img width="70" src="~/Content/images/twit.png" />
+                    </div>
+                    <p class="cpyright">Copyright © @DateTime.Now LOL.com</p>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h2 class="extralinks">LEGAL</h2>
+                    <ul class="links">
+                        <li>T & C's</li>
+                        <li>Privacy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<LOL.Models.ViewModels.WritingListViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Writers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="container-fluid">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-3 tile">
+                <div class="container personTile">
+                    <div class="row">
+                        <div class="col-6">
+                            <h5>
+                                <!-- actor name link to bio-->
+                                <a href="@Url.Action("Details","Persons",
+                            new { Id=item.Writer.PersonId})">
+                                    @Html.DisplayFor(modelItem => item.Writer.PersonFname)
+                                    @Html.DisplayFor(modelItem => item.Writer.PersonSname)
+                                </a>
+                            </h5>
+                        </div>
+                        <div class="col-6">
+                            @if (item.Writer.PersonImage != null)
+                            {
+                                <img src="@Url.Content(item.Writer.PersonImage)" width="100" height="140" />
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-6">
+
+                            @if (item.Film.FilmImage != null)
+                            {
+                                <img src="@Url.Content(item.Film.FilmImage)" width="100" height="140" />
+                            }
+                        </div>
+                        <div class="col-6">
+
+                            <h5>
+                                <!-- turn film title to link also-->
+                                <a href="@Url.Action("Details","Films",
+                            new { Id=item.Film.FilmId})">
+                                    @Html.DisplayFor(modelItem => item.Film.FilmTitle)
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.WritingCredit.WritingId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.WritingCredit.WritingId })
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

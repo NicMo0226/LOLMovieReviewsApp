@@ -1,0 +1,87 @@
+﻿@using LOL.Models;
+@model Tuple<Film, Review>
+@{
+    ViewBag.Title = "_homeLayOut.cshtml";
+}
+
+@section Scripts {
+    @RenderSection("scripts", required: false)
+}
+<div>
+    @RenderBody()
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+          
+            <div class="container nxtSect pImage">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="pageTitle">
+                            @Html.DisplayNameFor(tuple => tuple.Item1.FilmTitle)
+
+                        </h1>
+                    </div>
+                
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="name">
+
+                            <strong> <em>  @Html.DisplayNameFor(tuple => tuple.Item1.FilmBBFC):</em></strong>
+                            @Html.DisplayFor(tuple => tuple.Item1.FilmBBFC) |
+                            <strong>    <em> @Html.DisplayNameFor(tuple => tuple.Item1.FilmReleaseDate):</em></strong>
+                            @Html.DisplayFor(tuple => tuple.Item1.FilmReleaseDate) |
+                            <strong> <em>  @Html.DisplayNameFor(tuple => tuple.Item1.FilmSequel):</em></strong>
+                            @Html.DisplayFor(tuple => tuple.Item1)
+                        </div>
+                        <h4 class="undertitle">
+                            @Html.DisplayNameFor(tuple => tuple.Item1.FilmTrailer)
+                        </h4>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 ">
+
+            @Html.DisplayNameFor(tuple => tuple.Item2.ReviewId)
+            <h2>Review Details</h2>
+
+            <div>
+
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(tuple => tuple.Item1.FilmTitle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(tuple => tuple.Item1.FilmTitle)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(tuple => tuple.Item2.ReviewUname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(tuple => tuple.Item2.ReviewUname)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(tuple => tuple.Item2.ReviewContent)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(tuple => tuple.Item2.ReviewContent)
+                    </dd>
+
+                  
+                </dl>
+            </div>
+      
+
+        </div>
+    </div>
+</div>

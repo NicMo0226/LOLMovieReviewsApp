@@ -1,0 +1,78 @@
+﻿@model LOL.Models.Film
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Film</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+   
+    <hr />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="container DeleteTile">
+                    <h5>
+                     
+                        
+
+                            @Html.DisplayFor(model => model.FilmTitle)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FilmSequel)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.FilmSequel)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FilmBBFC)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.FilmBBFC)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FilmDesc)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.FilmDesc)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FilmReleaseDate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.FilmReleaseDate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FilmImage)
+                        </dt>
+
+                        <dd>
+                            @if (Model.FilmImage != null)
+                        {
+                            <img src="@Url.Content(Model.FilmImage)" width="100" />
+                    }
+                        </dd>
+
+                        </dl>
+
+                        @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn actionBtn btn-default" /> |
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                }
+                </div>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LOL.Models.ViewModels.FilmGenreListViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Film-Genres</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Film.FilmTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Film.FilmImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type.GenreName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Type.GenreName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.Film.FilmTitle)
+            </th>
+            <th>
+                @if (item.Film.FilmImage != null)
+                {
+                    <img src="@Url.Content(item.Film.FilmImage)" width="100" />
+                }
+            </th>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Type.GenreId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Type.GenreId })
+            </td>
+        </tr>
+    }
+
+</table>

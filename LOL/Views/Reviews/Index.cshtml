@@ -1,0 +1,80 @@
+﻿@model IEnumerable<LOL.Models.ViewModels.FilmReviewViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        //for each of the rating dropdowns....
+        $('.Rating ').each(function () {
+            //get the value of the id from the hidden field next to it
+            var selectId = $(this).next().val();
+            //now apply this as the current id and apply to the droipdown box
+            $(this).val(selectId);
+        });
+
+        //now apply the plugin and set to read only
+        $('.Rating').barrating({
+            theme: 'fontawesome-stars',
+            readonly: true
+        });
+    });
+</script>
+
+<h2>Reviews</h2>
+
+<p class="active">
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="container-fluid first">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <div class="container reviewTile">
+                    <h5>
+                        <!-- turn film title to link also-->
+                        <a href="@Url.Action("Details","Films",
+                            new { Id=item.Film.FilmId})">@Html.DisplayFor(modelItem => item.Film.FilmTitle)</a>
+                        </h5>
+                    <br />
+                        <p>
+                            <b>  @Html.DisplayNameFor(model => model.Review.ReviewUname) </b>
+                            @Html.DisplayFor(modelItem => item.Review.ReviewUname)
+                        </p>
+                        <br />
+                        <p>
+                          
+                            @Html.DisplayFor(modelItem => item.Review.ReviewContentTrimmed)
+                            @Html.ActionLink("Continue to full Review", "Details", new { id = item.Review.ReviewId })
+                        </p>
+
+                        <br />
+                        <!--dropdown menu-->
+                        <select class="Rating">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <input type="hidden" class="initialRating" value="@item.Review.ReviewRating">
+                        <br />
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Review.ReviewId }) |
+
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Review.ReviewId })
+                        </p>
+                    </div>
+                </div>
+
+            }
+    </div>
+</div>

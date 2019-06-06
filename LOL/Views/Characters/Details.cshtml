@@ -1,0 +1,52 @@
+﻿@model LOL.Models.Character
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Character</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterFname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterFname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterSname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterSname)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterQuote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterQuote)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CharacterId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,39 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+
+
+}
+
+<div class="container-fluid first">
+    <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-0 col-xs-0">
+            <h2>Films</h2>
+        </div>
+        <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+
+            @using (Html.BeginForm("Index", "Films", FormMethod.Get))
+            {
+                <p>
+                    Search: @Html.TextBox("searchString",
+ViewBag.CurrentFilter as string)
+
+
+                    <input class="glyphicon glyphicon-search" type="submit">
+
+                </p>
+            }
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid first">
+    <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-0 col-xs-0">
+
+        
+</div>
+</div>
+</div>
